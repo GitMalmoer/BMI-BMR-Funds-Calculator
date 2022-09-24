@@ -31,7 +31,20 @@
             this.lblName = new System.Windows.Forms.Label();
             this.lblHeight = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCmFt = new System.Windows.Forms.TextBox();
+            this.txtInch = new System.Windows.Forms.TextBox();
+            this.btnOK = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbtnMetric = new System.Windows.Forms.RadioButton();
+            this.rbtnImperial = new System.Windows.Forms.RadioButton();
+            this.grpResults = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblBMI = new System.Windows.Forms.Label();
+            this.lblWeightCategory = new System.Windows.Forms.Label();
+            this.lblNormalBMI = new System.Windows.Forms.Label();
+            this.groupBox1.SuspendLayout();
+            this.grpResults.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblName
@@ -59,24 +72,143 @@
             this.txtName.Size = new System.Drawing.Size(125, 27);
             this.txtName.TabIndex = 2;
             // 
-            // textBox1
+            // txtCmFt
             // 
-            this.textBox1.Location = new System.Drawing.Point(165, 69);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(125, 27);
-            this.textBox1.TabIndex = 3;
+            this.txtCmFt.Location = new System.Drawing.Point(165, 65);
+            this.txtCmFt.Name = "txtCmFt";
+            this.txtCmFt.Size = new System.Drawing.Size(51, 27);
+            this.txtCmFt.TabIndex = 3;
+            // 
+            // txtInch
+            // 
+            this.txtInch.Location = new System.Drawing.Point(236, 65);
+            this.txtInch.Name = "txtInch";
+            this.txtInch.Size = new System.Drawing.Size(54, 27);
+            this.txtInch.TabIndex = 4;
+            // 
+            // btnOK
+            // 
+            this.btnOK.Location = new System.Drawing.Point(140, 117);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(150, 29);
+            this.btnOK.TabIndex = 5;
+            this.btnOK.Text = "Calculate";
+            this.btnOK.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rbtnImperial);
+            this.groupBox1.Controls.Add(this.rbtnMetric);
+            this.groupBox1.Location = new System.Drawing.Point(469, 23);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(250, 125);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Unit";
+            // 
+            // rbtnMetric
+            // 
+            this.rbtnMetric.AutoSize = true;
+            this.rbtnMetric.Location = new System.Drawing.Point(26, 35);
+            this.rbtnMetric.Name = "rbtnMetric";
+            this.rbtnMetric.Size = new System.Drawing.Size(121, 24);
+            this.rbtnMetric.TabIndex = 0;
+            this.rbtnMetric.TabStop = true;
+            this.rbtnMetric.Text = "Metric(kg,cm)";
+            this.rbtnMetric.UseVisualStyleBackColor = true;
+            // 
+            // rbtnImperial
+            // 
+            this.rbtnImperial.AutoSize = true;
+            this.rbtnImperial.Location = new System.Drawing.Point(26, 65);
+            this.rbtnImperial.Name = "rbtnImperial";
+            this.rbtnImperial.Size = new System.Drawing.Size(127, 24);
+            this.rbtnImperial.TabIndex = 1;
+            this.rbtnImperial.TabStop = true;
+            this.rbtnImperial.Text = "Imperial(lbs,ft)";
+            this.rbtnImperial.UseVisualStyleBackColor = true;
+            // 
+            // grpResults
+            // 
+            this.grpResults.Controls.Add(this.lblWeightCategory);
+            this.grpResults.Controls.Add(this.lblBMI);
+            this.grpResults.Controls.Add(this.label2);
+            this.grpResults.Controls.Add(this.label1);
+            this.grpResults.Location = new System.Drawing.Point(27, 182);
+            this.grpResults.Name = "grpResults";
+            this.grpResults.Size = new System.Drawing.Size(413, 132);
+            this.grpResults.TabIndex = 7;
+            this.grpResults.TabStop = false;
+            this.grpResults.Text = "Results ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(17, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Your BMI";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(18, 77);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(116, 20);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "WeightCategory";
+            // 
+            // lblBMI
+            // 
+            this.lblBMI.AutoSize = true;
+            this.lblBMI.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblBMI.Location = new System.Drawing.Point(223, 31);
+            this.lblBMI.Name = "lblBMI";
+            this.lblBMI.Size = new System.Drawing.Size(52, 22);
+            this.lblBMI.TabIndex = 2;
+            this.lblBMI.Text = "label3";
+            // 
+            // lblWeightCategory
+            // 
+            this.lblWeightCategory.AutoSize = true;
+            this.lblWeightCategory.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblWeightCategory.Location = new System.Drawing.Point(223, 68);
+            this.lblWeightCategory.Name = "lblWeightCategory";
+            this.lblWeightCategory.Size = new System.Drawing.Size(52, 22);
+            this.lblWeightCategory.TabIndex = 3;
+            this.lblWeightCategory.Text = "label4";
+            // 
+            // lblNormalBMI
+            // 
+            this.lblNormalBMI.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblNormalBMI.Location = new System.Drawing.Point(63, 330);
+            this.lblNormalBMI.Name = "lblNormalBMI";
+            this.lblNormalBMI.Size = new System.Drawing.Size(337, 25);
+            this.lblNormalBMI.TabIndex = 8;
+            this.lblNormalBMI.Text = "label3";
+            this.lblNormalBMI.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.lblNormalBMI);
+            this.Controls.Add(this.grpResults);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnOK);
+            this.Controls.Add(this.txtInch);
+            this.Controls.Add(this.txtCmFt);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.lblHeight);
             this.Controls.Add(this.lblName);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.grpResults.ResumeLayout(false);
+            this.grpResults.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -87,6 +219,17 @@
         private Label lblName;
         private Label lblHeight;
         private TextBox txtName;
-        private TextBox textBox1;
+        private TextBox txtCmFt;
+        private TextBox txtInch;
+        private Button btnOK;
+        private GroupBox groupBox1;
+        private RadioButton rbtnImperial;
+        private RadioButton rbtnMetric;
+        private GroupBox grpResults;
+        private Label lblWeightCategory;
+        private Label lblBMI;
+        private Label label2;
+        private Label label1;
+        private Label lblNormalBMI;
     }
 }
