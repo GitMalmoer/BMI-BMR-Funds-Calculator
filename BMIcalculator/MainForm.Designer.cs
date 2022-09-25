@@ -148,9 +148,8 @@
             // 
             // lblWeightCategory
             // 
-            this.lblWeightCategory.AutoSize = true;
             this.lblWeightCategory.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblWeightCategory.Location = new System.Drawing.Point(223, 68);
+            this.lblWeightCategory.Location = new System.Drawing.Point(223, 77);
             this.lblWeightCategory.Name = "lblWeightCategory";
             this.lblWeightCategory.Size = new System.Drawing.Size(52, 22);
             this.lblWeightCategory.TabIndex = 3;
@@ -158,7 +157,6 @@
             // 
             // lblBMI
             // 
-            this.lblBMI.AutoSize = true;
             this.lblBMI.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblBMI.Location = new System.Drawing.Point(223, 31);
             this.lblBMI.Name = "lblBMI";
@@ -228,6 +226,7 @@
             this.Controls.Add(this.lblName);
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.grpResults.ResumeLayout(false);

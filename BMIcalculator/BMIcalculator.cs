@@ -30,7 +30,7 @@ namespace BMIcalculator
             this.height = height;
         }
 
-        public double getWeight(double weight)
+        public double getWeight()
         {
             return weight;
         }
@@ -41,7 +41,7 @@ namespace BMIcalculator
                 this.weight = weight;
         }
 
-        public UnitTypes getUnit(UnitTypes unit)
+        public UnitTypes getUnit()
         {
             return unit;
         }
@@ -72,7 +72,7 @@ namespace BMIcalculator
                 factor = 703.0;
             }
 
-            bmiValue = ((weight / (height*height)) * factor );
+            bmiValue = (factor  * weight / (height*height));
             return bmiValue;
         }
 
@@ -87,9 +87,9 @@ namespace BMIcalculator
                 stringout = "Normal weight";
             else if (bmi <= 29.9)
                 stringout = "Overweight";
-            else if (bmi <= 29.9)
-                stringout = "Overweight class I";
             else if (bmi <= 34.9)
+                stringout = "Overweight class I";
+            else if (bmi <= 39.9)
                 stringout = "Overweight class II";
             else if (bmi >= 40.0)
                 stringout = "Overweight class III";
