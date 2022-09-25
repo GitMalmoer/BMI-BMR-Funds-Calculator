@@ -5,13 +5,9 @@ namespace BMIcalculator
         private string name = string.Empty; // instance variable
         BMIcalculator bmiCalc = new BMIcalculator();
         public MainForm()
-        {
-            
+        {      
             InitializeComponent();
             InitializeGUI();
-            
-
-
         }
 
         private void InitializeGUI()
@@ -41,7 +37,10 @@ namespace BMIcalculator
             lblBMI.Text = ("");
             lblWeightCategory.Text = ("");
         }
-
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            CenterToScreen();
+        }
         private void rbtnMetric_CheckedChanged(object sender, EventArgs e)
         {
             UpdateHeightText();
@@ -55,6 +54,7 @@ namespace BMIcalculator
         private void btnOK_Click(object sender, EventArgs e)
         {
             bool ok = ReadInputBMI();
+            if(ok)
             CalculatesAndResults();
           
         }
@@ -139,12 +139,5 @@ namespace BMIcalculator
             lblBMI.Text = bmi.ToString("f2");
             lblWeightCategory.Text = bmiCalc.BmiWeightCategory();
         }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            CenterToScreen();
-        }
-
-     
     }
 }

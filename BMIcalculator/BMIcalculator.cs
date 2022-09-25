@@ -84,15 +84,15 @@ namespace BMIcalculator
             if (bmi < 18.5)
                 stringout = "Underweight";
             else if (bmi <= 24.9)
-                stringout = "Normal weight";
+                stringout = "Normal weight(Pre-Obesity)";
             else if (bmi <= 29.9)
                 stringout = "Overweight";
             else if (bmi <= 34.9)
-                stringout = "Overweight class I";
+                stringout = "Overweight (Obesity class I)";
             else if (bmi <= 39.9)
-                stringout = "Overweight class II";
+                stringout = "Overweight (Obesity class II)";
             else if (bmi >= 40.0)
-                stringout = "Overweight class III";
+                stringout = "Overweight (Obesity class III)";
             return stringout; 
         }
 
