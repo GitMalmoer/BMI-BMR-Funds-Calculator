@@ -49,7 +49,7 @@ namespace BMIcalculator
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            ReadInputBMI();
+            bool ok = ReadInputBMI();
         }
 
         private bool ReadInputBMI()
