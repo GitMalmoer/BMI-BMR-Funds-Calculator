@@ -46,16 +46,17 @@
             this.lblWeight = new System.Windows.Forms.Label();
             this.txtWeight = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtMonthlyDeposit = new System.Windows.Forms.TextBox();
             this.txtPeriod = new System.Windows.Forms.TextBox();
+            this.txtMonthlyDeposit = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnSavings = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lblFinalBalance = new System.Windows.Forms.Label();
             this.lblAmountPaid = new System.Windows.Forms.Label();
+            this.lblFinalBalance = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblNormalWeight = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.grpResults.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -234,14 +235,21 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Saving Plan";
             // 
-            // label3
+            // txtPeriod
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 38);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(119, 20);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Monthly Deposit";
+            this.txtPeriod.Location = new System.Drawing.Point(153, 75);
+            this.txtPeriod.Name = "txtPeriod";
+            this.txtPeriod.Size = new System.Drawing.Size(124, 27);
+            this.txtPeriod.TabIndex = 3;
+            this.txtPeriod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtMonthlyDeposit
+            // 
+            this.txtMonthlyDeposit.Location = new System.Drawing.Point(153, 38);
+            this.txtMonthlyDeposit.Name = "txtMonthlyDeposit";
+            this.txtMonthlyDeposit.Size = new System.Drawing.Size(124, 27);
+            this.txtMonthlyDeposit.TabIndex = 2;
+            this.txtMonthlyDeposit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label4
             // 
@@ -252,21 +260,14 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Period (years)";
             // 
-            // txtMonthlyDeposit
+            // label3
             // 
-            this.txtMonthlyDeposit.Location = new System.Drawing.Point(153, 38);
-            this.txtMonthlyDeposit.Name = "txtMonthlyDeposit";
-            this.txtMonthlyDeposit.Size = new System.Drawing.Size(124, 27);
-            this.txtMonthlyDeposit.TabIndex = 2;
-            this.txtMonthlyDeposit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtPeriod
-            // 
-            this.txtPeriod.Location = new System.Drawing.Point(153, 75);
-            this.txtPeriod.Name = "txtPeriod";
-            this.txtPeriod.Size = new System.Drawing.Size(124, 27);
-            this.txtPeriod.TabIndex = 3;
-            this.txtPeriod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 38);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(119, 20);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Monthly Deposit";
             // 
             // btnSavings
             // 
@@ -276,6 +277,7 @@
             this.btnSavings.TabIndex = 12;
             this.btnSavings.Text = "Calculate Saving";
             this.btnSavings.UseVisualStyleBackColor = true;
+            this.btnSavings.Click += new System.EventHandler(this.btnSavings_Click);
             // 
             // groupBox3
             // 
@@ -290,23 +292,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Future Value";
             // 
-            // label5
+            // lblAmountPaid
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 37);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(94, 20);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Amount Paid";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(15, 71);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(96, 20);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Final Balance";
+            this.lblAmountPaid.AutoSize = true;
+            this.lblAmountPaid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblAmountPaid.Location = new System.Drawing.Point(139, 37);
+            this.lblAmountPaid.Name = "lblAmountPaid";
+            this.lblAmountPaid.Size = new System.Drawing.Size(52, 22);
+            this.lblAmountPaid.TabIndex = 3;
+            this.lblAmountPaid.Text = "label8";
             // 
             // lblFinalBalance
             // 
@@ -318,21 +312,40 @@
             this.lblFinalBalance.TabIndex = 2;
             this.lblFinalBalance.Text = "label7";
             // 
-            // lblAmountPaid
+            // label6
             // 
-            this.lblAmountPaid.AutoSize = true;
-            this.lblAmountPaid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblAmountPaid.Location = new System.Drawing.Point(139, 37);
-            this.lblAmountPaid.Name = "lblAmountPaid";
-            this.lblAmountPaid.Size = new System.Drawing.Size(52, 22);
-            this.lblAmountPaid.TabIndex = 3;
-            this.lblAmountPaid.Text = "label8";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(15, 71);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(96, 20);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Final Balance";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(15, 37);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(94, 20);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Amount Paid";
+            // 
+            // lblNormalWeight
+            // 
+            this.lblNormalWeight.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblNormalWeight.Location = new System.Drawing.Point(27, 374);
+            this.lblNormalWeight.Name = "lblNormalWeight";
+            this.lblNormalWeight.Size = new System.Drawing.Size(455, 22);
+            this.lblNormalWeight.TabIndex = 14;
+            this.lblNormalWeight.Text = "label 4";
+            this.lblNormalWeight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1086, 498);
+            this.Controls.Add(this.lblNormalWeight);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnSavings);
             this.Controls.Add(this.groupBox2);
@@ -396,5 +409,6 @@
         private Label lblFinalBalance;
         private Label label6;
         private Label label5;
+        private Label lblNormalWeight;
     }
 }

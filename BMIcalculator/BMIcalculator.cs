@@ -20,7 +20,6 @@ namespace BMIcalculator
         #region Setters and getters
         public double getHeight(double height)
         {
-            
             return height;
         }
 
@@ -94,6 +93,34 @@ namespace BMIcalculator
             else if (bmi >= 40.0)
                 stringout = "Overweight (Obesity class III)";
             return stringout; 
+        }
+
+        public double NormalWeightLowLimit()
+        {
+            double factor = 1.0;
+            double weight;
+            double weightLow;
+            if (unit == UnitTypes.Imperial)
+            {
+                factor = 703.0;
+            }
+            weight = (this.height * this.height)/factor;
+            weightLow = weight * 18.50; //low limit 
+            return weightLow;
+        }
+
+        public double NormalWeightHighLimit()
+        {
+            double factor = 1.0;
+            double weight;
+            double weightHigh;
+            if (unit == UnitTypes.Imperial)
+            {
+                factor = 703.0;
+            }
+            weight = (this.height * this.height) / factor;
+            weightHigh = weight * 24.9; // high limit 
+            return weightHigh;
         }
 
     }
