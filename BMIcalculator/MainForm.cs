@@ -13,12 +13,16 @@ namespace BMIcalculator
 
         private void InitializeGUI()
         {
-            this.Text = "Marcin Junka";
+            this.Text = "Super Calculator by Marcin Junka";
             lblBMI.Text = String.Empty;
             lblWeightCategory.Text = string.Empty;
             lblNormalBMI.Text = "Normal Weight";
             rbtnMetric.Checked = true;
             lblNormalBMI.Text = ("Normal BMI is between 18.5 and 24.9");
+            lblAmountPaid.Text = String.Empty;
+            lblFinalBalance.Text = String.Empty;
+            lblIntrestEarned.Text = String.Empty;
+            lblTotalTax.Text = String.Empty;
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -156,11 +160,13 @@ namespace BMIcalculator
         {
             double monthlyDeposit = 0.0;
             bool ok = double.TryParse((txtMonthlyDeposit.Text).Trim(), out monthlyDeposit);
-            if(!ok)
+            if(!ok || monthlyDeposit <= 0)
             {
                 MessageBox.Show("Error wrong Monthly deposit value.");
             }
+            else
             savingCalc.SetDeposit(monthlyDeposit);
+            
             return ok;
 
         }
@@ -169,11 +175,43 @@ namespace BMIcalculator
         {
             int savingsPeriod = 0;
             bool ok = int.TryParse(txtPeriod.Text.Trim(), out savingsPeriod);
-            if(!ok && savingsPeriod < 1)
+            if(!ok || savingsPeriod < 1)
             {
                 MessageBox.Show("Error, Wrong Saving Period");
             }
+            else
             savingCalc.SetYears(savingsPeriod);
+            
+            return ok;
+        }
+
+        bool ReadIntrestRate()
+        {
+            double intrestRate; 
+            bool ok = double.TryParse(txtIntrestRate.Text.Trim(), out intrestRate);
+            
+            if(!ok || intrestRate < 0)
+            {
+                MessageBox.Show("Error, Wrong Intrest Rate");
+            }
+            else // else is needed otherwise intrestRate will go to calculator
+            {
+                savingCalc.SetIntrestRate(intrestRate);
+            }
+            return ok;
+            
+        }
+
+        bool ReadTax()
+        {
+            double tax = 0.0;
+            bool ok = double.TryParse(txtTax.Text, out tax);
+            if(!ok)
+            {
+                MessageBox.Show("Error, Wrong Tax");
+            }
+            else
+            savingCalc.SetTax(tax);
             return ok;
         }
 
@@ -181,8 +219,14 @@ namespace BMIcalculator
         {
             ReadMonthlyDeposit();
             ReadSavingsPeriod();
+            ReadIntrestRate();
+            ReadTax();
+
             lblAmountPaid.Text = savingCalc.CalculateAmountPaid().ToString("f2");
             lblFinalBalance.Text = savingCalc.CalculateBalance().ToString("f2");
+            lblIntrestEarned.Text = savingCalc.ReturnIntrestEarned().ToString("f2");
+            lblTotalTax.Text = savingCalc.ReturnTaxAmount().ToString("f2");
+            
         }
     }
 }

@@ -46,17 +46,25 @@
             this.lblWeight = new System.Windows.Forms.Label();
             this.txtWeight = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtTax = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtIntrestRate = new System.Windows.Forms.TextBox();
             this.txtPeriod = new System.Windows.Forms.TextBox();
             this.txtMonthlyDeposit = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSavings = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblIntrestEarned = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.lblAmountPaid = new System.Windows.Forms.Label();
             this.lblFinalBalance = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblNormalWeight = new System.Windows.Forms.Label();
+            this.lblTotalTax = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.grpResults.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -224,20 +232,57 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.txtTax);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.txtIntrestRate);
             this.groupBox2.Controls.Add(this.txtPeriod);
             this.groupBox2.Controls.Add(this.txtMonthlyDeposit);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Location = new System.Drawing.Point(509, 26);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(298, 123);
+            this.groupBox2.Size = new System.Drawing.Size(360, 189);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Saving Plan";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(10, 142);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(68, 20);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "fees in %";
+            // 
+            // txtTax
+            // 
+            this.txtTax.Location = new System.Drawing.Point(183, 142);
+            this.txtTax.Name = "txtTax";
+            this.txtTax.Size = new System.Drawing.Size(125, 27);
+            this.txtTax.TabIndex = 6;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(10, 111);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(166, 20);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "Growth (or Intrest) in % ";
+            // 
+            // txtIntrestRate
+            // 
+            this.txtIntrestRate.Location = new System.Drawing.Point(184, 109);
+            this.txtIntrestRate.Name = "txtIntrestRate";
+            this.txtIntrestRate.Size = new System.Drawing.Size(125, 27);
+            this.txtIntrestRate.TabIndex = 4;
+            this.txtIntrestRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // txtPeriod
             // 
-            this.txtPeriod.Location = new System.Drawing.Point(153, 75);
+            this.txtPeriod.Location = new System.Drawing.Point(184, 76);
             this.txtPeriod.Name = "txtPeriod";
             this.txtPeriod.Size = new System.Drawing.Size(124, 27);
             this.txtPeriod.TabIndex = 3;
@@ -245,7 +290,7 @@
             // 
             // txtMonthlyDeposit
             // 
-            this.txtMonthlyDeposit.Location = new System.Drawing.Point(153, 38);
+            this.txtMonthlyDeposit.Location = new System.Drawing.Point(184, 39);
             this.txtMonthlyDeposit.Name = "txtMonthlyDeposit";
             this.txtMonthlyDeposit.Size = new System.Drawing.Size(124, 27);
             this.txtMonthlyDeposit.TabIndex = 2;
@@ -271,7 +316,7 @@
             // 
             // btnSavings
             // 
-            this.btnSavings.Location = new System.Drawing.Point(578, 155);
+            this.btnSavings.Location = new System.Drawing.Point(607, 230);
             this.btnSavings.Name = "btnSavings";
             this.btnSavings.Size = new System.Drawing.Size(166, 29);
             this.btnSavings.TabIndex = 12;
@@ -281,22 +326,45 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.lblTotalTax);
+            this.groupBox3.Controls.Add(this.lblIntrestEarned);
+            this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.lblAmountPaid);
             this.groupBox3.Controls.Add(this.lblFinalBalance);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Location = new System.Drawing.Point(509, 201);
+            this.groupBox3.Location = new System.Drawing.Point(519, 283);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(298, 113);
+            this.groupBox3.Size = new System.Drawing.Size(298, 202);
             this.groupBox3.TabIndex = 13;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Future Value";
+            // 
+            // lblIntrestEarned
+            // 
+            this.lblIntrestEarned.AutoSize = true;
+            this.lblIntrestEarned.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblIntrestEarned.Location = new System.Drawing.Point(158, 72);
+            this.lblIntrestEarned.Name = "lblIntrestEarned";
+            this.lblIntrestEarned.Size = new System.Drawing.Size(60, 22);
+            this.lblIntrestEarned.TabIndex = 5;
+            this.lblIntrestEarned.Text = "label10";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(15, 72);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(112, 20);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "Amount Earned";
             // 
             // lblAmountPaid
             // 
             this.lblAmountPaid.AutoSize = true;
             this.lblAmountPaid.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblAmountPaid.Location = new System.Drawing.Point(139, 37);
+            this.lblAmountPaid.Location = new System.Drawing.Point(158, 37);
             this.lblAmountPaid.Name = "lblAmountPaid";
             this.lblAmountPaid.Size = new System.Drawing.Size(52, 22);
             this.lblAmountPaid.TabIndex = 3;
@@ -306,7 +374,7 @@
             // 
             this.lblFinalBalance.AutoSize = true;
             this.lblFinalBalance.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblFinalBalance.Location = new System.Drawing.Point(139, 71);
+            this.lblFinalBalance.Location = new System.Drawing.Point(158, 108);
             this.lblFinalBalance.Name = "lblFinalBalance";
             this.lblFinalBalance.Size = new System.Drawing.Size(52, 22);
             this.lblFinalBalance.TabIndex = 2;
@@ -315,7 +383,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(15, 71);
+            this.label6.Location = new System.Drawing.Point(15, 108);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(96, 20);
             this.label6.TabIndex = 1;
@@ -340,11 +408,30 @@
             this.lblNormalWeight.Text = "label 4";
             this.lblNormalWeight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lblTotalTax
+            // 
+            this.lblTotalTax.AutoSize = true;
+            this.lblTotalTax.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTotalTax.Location = new System.Drawing.Point(158, 141);
+            this.lblTotalTax.Name = "lblTotalTax";
+            this.lblTotalTax.Size = new System.Drawing.Size(60, 22);
+            this.lblTotalTax.TabIndex = 6;
+            this.lblTotalTax.Text = "label10";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(15, 141);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(75, 20);
+            this.label11.TabIndex = 7;
+            this.label11.Text = "Total Fees";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1086, 498);
+            this.ClientSize = new System.Drawing.Size(1070, 575);
             this.Controls.Add(this.lblNormalWeight);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnSavings);
@@ -410,5 +497,13 @@
         private Label label6;
         private Label label5;
         private Label lblNormalWeight;
+        private Label label7;
+        private TextBox txtIntrestRate;
+        private Label label8;
+        private TextBox txtTax;
+        private Label lblIntrestEarned;
+        private Label label9;
+        private Label label11;
+        private Label lblTotalTax;
     }
 }
