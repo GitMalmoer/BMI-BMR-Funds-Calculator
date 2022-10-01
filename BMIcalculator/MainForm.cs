@@ -2,13 +2,16 @@ namespace BMIcalculator
 {
     public partial class MainForm : Form
     {
-        private string name = string.Empty; // instance variable
+        private string name = string.Empty; 
         BMIcalculator bmiCalc = new BMIcalculator();
         SavingCalculator savingCalc = new SavingCalculator();
+        BmrCalculator bmrCalc = new BmrCalculator();
+       
         public MainForm()
         {      
             InitializeComponent();
             InitializeGUI();
+            
         }
 
         private void InitializeGUI()
@@ -23,6 +26,8 @@ namespace BMIcalculator
             lblFinalBalance.Text = String.Empty;
             lblIntrestEarned.Text = String.Empty;
             lblTotalTax.Text = String.Empty;
+            lblNormalWeight.Text = String.Empty;
+            rbtnNoActive.Checked = true;
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -156,6 +161,7 @@ namespace BMIcalculator
 
         #endregion
 
+        #region SavingsCalculator
         private bool ReadMonthlyDeposit()
         {
             double monthlyDeposit = 0.0;
@@ -228,5 +234,91 @@ namespace BMIcalculator
             lblTotalTax.Text = savingCalc.ReturnTaxAmount().ToString("f2");
             
         }
+
+        #endregion
+        
+        #region BMRCalculator
+        private void UpdateGenderStatus()
+        {
+            if(rbtnFemale.Checked)
+            {
+                bmrCalc.SetGender(Gender.Female);
+            }
+            else
+            {
+                bmrCalc.SetGender(Gender.Male);
+            }
+        }
+
+        private void rbtnFemale_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateGenderStatus();
+        }
+
+        private void rbtnMale_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateGenderStatus();
+        }
+
+        private void ReadAge()
+        {
+            int age;
+            bool ok = int.TryParse(txtAge.Text , out age);
+
+            if(!ok)
+            {
+                MessageBox.Show("Error Wrong Age");
+            }
+            else
+            {
+                bmrCalc.SetAge(age);
+            }
+        }
+        
+
+        private void rbtnNoActive_CheckedChanged(object sender, EventArgs e)
+        {
+            bmrCalc.SetFactor(1.2);
+        }
+
+        private void rbtnLightlyActive_CheckedChanged(object sender, EventArgs e)
+        {
+            bmrCalc.SetFactor(1.375);
+        }
+
+        private void rbtnModeratelyActive_CheckedChanged(object sender, EventArgs e)
+        {
+            bmrCalc.SetFactor(1.550);
+        }
+
+        private void rbtnVeryActive_CheckedChanged(object sender, EventArgs e)
+        {
+            bmrCalc.SetFactor(1.725);
+        }
+
+        private void rbtnExtraActiv_CheckedChanged(object sender, EventArgs e)
+        {
+            bmrCalc.SetFactor(1.9);
+        }
+
+        private void btnCalculateBMR_Click(object sender, EventArgs e)
+        {
+            ReadInputBMI(); // first we need to read input from ReadWeight() and ReadHeight()
+            ReadUnit(); // reading unit
+            
+            // Then we put values from BMICalculator into instance values in BmrCalculator
+            bmrCalc.GetWeightFromBmiClass(bmiCalc); // we do it by using those two methods
+            bmrCalc.GetHeightFromBmiClass(bmiCalc);
+            bmrCalc.GetUnitFromBmiClass(bmiCalc);
+
+            ReadAge(); // we also need to read age value to calculations
+
+            
+
+            lblBmr.Text = bmrCalc.CalculateBMR().ToString("f2"); // lastly we do calculations 
+            lblMaintainWeight.Text = bmrCalc.MaintainWeight().ToString("f2");
+            lblLoseOrGain.Text = bmrCalc.LoseOrGainWeight().ToString();
+        }
+        #endregion
     }
 }

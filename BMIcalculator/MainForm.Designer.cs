@@ -56,6 +56,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnSavings = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lblTotalTax = new System.Windows.Forms.Label();
             this.lblIntrestEarned = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.lblAmountPaid = new System.Windows.Forms.Label();
@@ -63,12 +65,29 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lblNormalWeight = new System.Windows.Forms.Label();
-            this.lblTotalTax = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnCalculateBMR = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.lblBmr = new System.Windows.Forms.Label();
+            this.rbtnExtraActiv = new System.Windows.Forms.RadioButton();
+            this.rbtnVeryActive = new System.Windows.Forms.RadioButton();
+            this.rbtnModeratelyActive = new System.Windows.Forms.RadioButton();
+            this.rbtnLightlyActive = new System.Windows.Forms.RadioButton();
+            this.rbtnNoActive = new System.Windows.Forms.RadioButton();
+            this.txtAge = new System.Windows.Forms.TextBox();
+            this.lblAge = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.rbtnMale = new System.Windows.Forms.RadioButton();
+            this.rbtnFemale = new System.Windows.Forms.RadioButton();
+            this.lblMaintainWeight = new System.Windows.Forms.Label();
+            this.lblLoseOrGain = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.grpResults.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblName
@@ -163,7 +182,7 @@
             this.grpResults.Controls.Add(this.label1);
             this.grpResults.Location = new System.Drawing.Point(27, 182);
             this.grpResults.Name = "grpResults";
-            this.grpResults.Size = new System.Drawing.Size(455, 132);
+            this.grpResults.Size = new System.Drawing.Size(455, 147);
             this.grpResults.TabIndex = 7;
             this.grpResults.TabStop = false;
             this.grpResults.Text = "Results ";
@@ -171,7 +190,7 @@
             // lblWeightCategory
             // 
             this.lblWeightCategory.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblWeightCategory.Location = new System.Drawing.Point(223, 77);
+            this.lblWeightCategory.Location = new System.Drawing.Point(222, 89);
             this.lblWeightCategory.Name = "lblWeightCategory";
             this.lblWeightCategory.Size = new System.Drawing.Size(169, 22);
             this.lblWeightCategory.TabIndex = 3;
@@ -189,7 +208,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 77);
+            this.label2.Location = new System.Drawing.Point(17, 89);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(116, 20);
             this.label2.TabIndex = 1;
@@ -207,7 +226,7 @@
             // lblNormalBMI
             // 
             this.lblNormalBMI.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblNormalBMI.Location = new System.Drawing.Point(27, 330);
+            this.lblNormalBMI.Location = new System.Drawing.Point(25, 362);
             this.lblNormalBMI.Name = "lblNormalBMI";
             this.lblNormalBMI.Size = new System.Drawing.Size(455, 25);
             this.lblNormalBMI.TabIndex = 8;
@@ -316,7 +335,7 @@
             // 
             // btnSavings
             // 
-            this.btnSavings.Location = new System.Drawing.Point(607, 230);
+            this.btnSavings.Location = new System.Drawing.Point(607, 221);
             this.btnSavings.Name = "btnSavings";
             this.btnSavings.Size = new System.Drawing.Size(166, 29);
             this.btnSavings.TabIndex = 12;
@@ -334,12 +353,31 @@
             this.groupBox3.Controls.Add(this.lblFinalBalance);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Location = new System.Drawing.Point(519, 283);
+            this.groupBox3.Location = new System.Drawing.Point(519, 259);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(298, 202);
+            this.groupBox3.Size = new System.Drawing.Size(350, 175);
             this.groupBox3.TabIndex = 13;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Future Value";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(15, 141);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(75, 20);
+            this.label11.TabIndex = 7;
+            this.label11.Text = "Total Fees";
+            // 
+            // lblTotalTax
+            // 
+            this.lblTotalTax.AutoSize = true;
+            this.lblTotalTax.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTotalTax.Location = new System.Drawing.Point(158, 141);
+            this.lblTotalTax.Name = "lblTotalTax";
+            this.lblTotalTax.Size = new System.Drawing.Size(60, 22);
+            this.lblTotalTax.TabIndex = 6;
+            this.lblTotalTax.Text = "label10";
             // 
             // lblIntrestEarned
             // 
@@ -401,37 +439,198 @@
             // lblNormalWeight
             // 
             this.lblNormalWeight.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblNormalWeight.Location = new System.Drawing.Point(27, 374);
+            this.lblNormalWeight.Location = new System.Drawing.Point(27, 412);
             this.lblNormalWeight.Name = "lblNormalWeight";
             this.lblNormalWeight.Size = new System.Drawing.Size(455, 22);
             this.lblNormalWeight.TabIndex = 14;
             this.lblNormalWeight.Text = "label 4";
             this.lblNormalWeight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblTotalTax
+            // groupBox4
             // 
-            this.lblTotalTax.AutoSize = true;
-            this.lblTotalTax.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblTotalTax.Location = new System.Drawing.Point(158, 141);
-            this.lblTotalTax.Name = "lblTotalTax";
-            this.lblTotalTax.Size = new System.Drawing.Size(60, 22);
-            this.lblTotalTax.TabIndex = 6;
-            this.lblTotalTax.Text = "label10";
+            this.groupBox4.Controls.Add(this.btnCalculateBMR);
+            this.groupBox4.Controls.Add(this.groupBox6);
+            this.groupBox4.Controls.Add(this.txtAge);
+            this.groupBox4.Controls.Add(this.lblAge);
+            this.groupBox4.Controls.Add(this.groupBox5);
+            this.groupBox4.Location = new System.Drawing.Point(27, 463);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(863, 403);
+            this.groupBox4.TabIndex = 15;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "BMR calculator";
             // 
-            // label11
+            // btnCalculateBMR
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(15, 141);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(75, 20);
-            this.label11.TabIndex = 7;
-            this.label11.Text = "Total Fees";
+            this.btnCalculateBMR.Location = new System.Drawing.Point(630, 359);
+            this.btnCalculateBMR.Name = "btnCalculateBMR";
+            this.btnCalculateBMR.Size = new System.Drawing.Size(212, 29);
+            this.btnCalculateBMR.TabIndex = 4;
+            this.btnCalculateBMR.Text = "Calculate BMR";
+            this.btnCalculateBMR.UseVisualStyleBackColor = true;
+            this.btnCalculateBMR.Click += new System.EventHandler(this.btnCalculateBMR_Click);
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.lblLoseOrGain);
+            this.groupBox6.Controls.Add(this.lblMaintainWeight);
+            this.groupBox6.Controls.Add(this.lblBmr);
+            this.groupBox6.Controls.Add(this.rbtnExtraActiv);
+            this.groupBox6.Controls.Add(this.rbtnVeryActive);
+            this.groupBox6.Controls.Add(this.rbtnModeratelyActive);
+            this.groupBox6.Controls.Add(this.rbtnLightlyActive);
+            this.groupBox6.Controls.Add(this.rbtnNoActive);
+            this.groupBox6.Location = new System.Drawing.Point(177, 55);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(652, 276);
+            this.groupBox6.TabIndex = 3;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Weekly Activity Level";
+            // 
+            // lblBmr
+            // 
+            this.lblBmr.AutoSize = true;
+            this.lblBmr.Location = new System.Drawing.Point(289, 24);
+            this.lblBmr.Name = "lblBmr";
+            this.lblBmr.Size = new System.Drawing.Size(58, 20);
+            this.lblBmr.TabIndex = 5;
+            this.lblBmr.Text = "label10";
+            // 
+            // rbtnExtraActiv
+            // 
+            this.rbtnExtraActiv.AutoSize = true;
+            this.rbtnExtraActiv.Location = new System.Drawing.Point(11, 160);
+            this.rbtnExtraActiv.Name = "rbtnExtraActiv";
+            this.rbtnExtraActiv.Size = new System.Drawing.Size(262, 24);
+            this.rbtnExtraActiv.TabIndex = 4;
+            this.rbtnExtraActiv.TabStop = true;
+            this.rbtnExtraActiv.Text = "Extra Activ (hard excercise or work)";
+            this.rbtnExtraActiv.UseVisualStyleBackColor = true;
+            this.rbtnExtraActiv.CheckedChanged += new System.EventHandler(this.rbtnExtraActiv_CheckedChanged);
+            // 
+            // rbtnVeryActive
+            // 
+            this.rbtnVeryActive.AutoSize = true;
+            this.rbtnVeryActive.Location = new System.Drawing.Point(11, 130);
+            this.rbtnVeryActive.Name = "rbtnVeryActive";
+            this.rbtnVeryActive.Size = new System.Drawing.Size(199, 24);
+            this.rbtnVeryActive.TabIndex = 3;
+            this.rbtnVeryActive.TabStop = true;
+            this.rbtnVeryActive.Text = "Very Active (6 to 7 times) ";
+            this.rbtnVeryActive.UseVisualStyleBackColor = true;
+            this.rbtnVeryActive.CheckedChanged += new System.EventHandler(this.rbtnVeryActive_CheckedChanged);
+            // 
+            // rbtnModeratelyActive
+            // 
+            this.rbtnModeratelyActive.AutoSize = true;
+            this.rbtnModeratelyActive.Location = new System.Drawing.Point(11, 99);
+            this.rbtnModeratelyActive.Name = "rbtnModeratelyActive";
+            this.rbtnModeratelyActive.Size = new System.Drawing.Size(243, 24);
+            this.rbtnModeratelyActive.TabIndex = 2;
+            this.rbtnModeratelyActive.TabStop = true;
+            this.rbtnModeratelyActive.Text = "Moderately Active (3 to 5 times)";
+            this.rbtnModeratelyActive.UseVisualStyleBackColor = true;
+            this.rbtnModeratelyActive.CheckedChanged += new System.EventHandler(this.rbtnModeratelyActive_CheckedChanged);
+            // 
+            // rbtnLightlyActive
+            // 
+            this.rbtnLightlyActive.AutoSize = true;
+            this.rbtnLightlyActive.Location = new System.Drawing.Point(11, 69);
+            this.rbtnLightlyActive.Name = "rbtnLightlyActive";
+            this.rbtnLightlyActive.Size = new System.Drawing.Size(171, 24);
+            this.rbtnLightlyActive.TabIndex = 1;
+            this.rbtnLightlyActive.TabStop = true;
+            this.rbtnLightlyActive.Text = "Lightly Active (1 to 3)";
+            this.rbtnLightlyActive.UseVisualStyleBackColor = true;
+            this.rbtnLightlyActive.CheckedChanged += new System.EventHandler(this.rbtnLightlyActive_CheckedChanged);
+            // 
+            // rbtnNoActive
+            // 
+            this.rbtnNoActive.AutoSize = true;
+            this.rbtnNoActive.Location = new System.Drawing.Point(11, 33);
+            this.rbtnNoActive.Name = "rbtnNoActive";
+            this.rbtnNoActive.Size = new System.Drawing.Size(243, 24);
+            this.rbtnNoActive.TabIndex = 0;
+            this.rbtnNoActive.TabStop = true;
+            this.rbtnNoActive.Text = "Sedentary (little or no excercise)";
+            this.rbtnNoActive.UseVisualStyleBackColor = true;
+            this.rbtnNoActive.CheckedChanged += new System.EventHandler(this.rbtnNoActive_CheckedChanged);
+            // 
+            // txtAge
+            // 
+            this.txtAge.Location = new System.Drawing.Point(98, 182);
+            this.txtAge.Name = "txtAge";
+            this.txtAge.Size = new System.Drawing.Size(50, 27);
+            this.txtAge.TabIndex = 2;
+            // 
+            // lblAge
+            // 
+            this.lblAge.AutoSize = true;
+            this.lblAge.Location = new System.Drawing.Point(31, 185);
+            this.lblAge.Name = "lblAge";
+            this.lblAge.Size = new System.Drawing.Size(36, 20);
+            this.lblAge.TabIndex = 1;
+            this.lblAge.Text = "Age";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.rbtnMale);
+            this.groupBox5.Controls.Add(this.rbtnFemale);
+            this.groupBox5.Location = new System.Drawing.Point(17, 42);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(131, 125);
+            this.groupBox5.TabIndex = 0;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Gender";
+            // 
+            // rbtnMale
+            // 
+            this.rbtnMale.AutoSize = true;
+            this.rbtnMale.Location = new System.Drawing.Point(14, 63);
+            this.rbtnMale.Name = "rbtnMale";
+            this.rbtnMale.Size = new System.Drawing.Size(63, 24);
+            this.rbtnMale.TabIndex = 1;
+            this.rbtnMale.TabStop = true;
+            this.rbtnMale.Text = "Male";
+            this.rbtnMale.UseVisualStyleBackColor = true;
+            this.rbtnMale.CheckedChanged += new System.EventHandler(this.rbtnMale_CheckedChanged);
+            // 
+            // rbtnFemale
+            // 
+            this.rbtnFemale.AutoSize = true;
+            this.rbtnFemale.Location = new System.Drawing.Point(14, 33);
+            this.rbtnFemale.Name = "rbtnFemale";
+            this.rbtnFemale.Size = new System.Drawing.Size(78, 24);
+            this.rbtnFemale.TabIndex = 0;
+            this.rbtnFemale.TabStop = true;
+            this.rbtnFemale.Text = "Female";
+            this.rbtnFemale.UseVisualStyleBackColor = true;
+            this.rbtnFemale.CheckedChanged += new System.EventHandler(this.rbtnFemale_CheckedChanged);
+            // 
+            // lblMaintainWeight
+            // 
+            this.lblMaintainWeight.AutoSize = true;
+            this.lblMaintainWeight.Location = new System.Drawing.Point(289, 69);
+            this.lblMaintainWeight.Name = "lblMaintainWeight";
+            this.lblMaintainWeight.Size = new System.Drawing.Size(58, 20);
+            this.lblMaintainWeight.TabIndex = 6;
+            this.lblMaintainWeight.Text = "label10";
+            // 
+            // lblLoseOrGain
+            // 
+            this.lblLoseOrGain.AutoSize = true;
+            this.lblLoseOrGain.Location = new System.Drawing.Point(289, 112);
+            this.lblLoseOrGain.Name = "lblLoseOrGain";
+            this.lblLoseOrGain.Size = new System.Drawing.Size(58, 20);
+            this.lblLoseOrGain.TabIndex = 7;
+            this.lblLoseOrGain.Text = "label10";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1070, 575);
+            this.ClientSize = new System.Drawing.Size(1085, 898);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.lblNormalWeight);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnSavings);
@@ -461,6 +660,12 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -505,5 +710,21 @@
         private Label label9;
         private Label label11;
         private Label lblTotalTax;
+        private GroupBox groupBox4;
+        private Button btnCalculateBMR;
+        private GroupBox groupBox6;
+        private RadioButton rbtnExtraActiv;
+        private RadioButton rbtnVeryActive;
+        private RadioButton rbtnModeratelyActive;
+        private RadioButton rbtnLightlyActive;
+        private RadioButton rbtnNoActive;
+        private TextBox txtAge;
+        private Label lblAge;
+        private GroupBox groupBox5;
+        private RadioButton rbtnMale;
+        private RadioButton rbtnFemale;
+        private Label lblBmr;
+        private Label lblLoseOrGain;
+        private Label lblMaintainWeight;
     }
 }

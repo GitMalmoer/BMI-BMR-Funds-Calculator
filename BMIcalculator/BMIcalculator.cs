@@ -18,7 +18,7 @@ namespace BMIcalculator
         }
 
         #region Setters and getters
-        public double getHeight(double height)
+        public double getHeight()
         {
             return height;
         }
@@ -71,7 +71,7 @@ namespace BMIcalculator
                 factor = 703.0;
             }
 
-            bmiValue = (factor  * weight / (height*height));
+            bmiValue = factor  * (weight / (height*height));
             return bmiValue;
         }
 
