@@ -6,7 +6,6 @@ namespace BMIcalculator
         BMIcalculator bmiCalc = new BMIcalculator();
         SavingCalculator savingCalc = new SavingCalculator();
         BmrCalculator bmrCalc = new BmrCalculator();
-       
         public MainForm()
         {      
             InitializeComponent();
@@ -28,6 +27,7 @@ namespace BMIcalculator
             lblTotalTax.Text = String.Empty;
             lblNormalWeight.Text = String.Empty;
             rbtnNoActive.Checked = true;
+            rbtnFemale.Checked = true;
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -76,6 +76,11 @@ namespace BMIcalculator
                 string sentence = ($"Normal weight should be between {a} and {b}"); // putting both methods in a string
                 lblNormalWeight.Text = sentence;
             }
+            else // if input is wrong it clears the labels
+            {
+                lblBMI.Text = string.Empty;
+                lblWeightCategory.Text = String.Empty;
+            }
           
         }
 
@@ -86,7 +91,6 @@ namespace BMIcalculator
             bool weightOK = ReadWeight();
             bool heightOK = ReadHeight();
             
-
             return weightOK && heightOK;
         }
         
@@ -112,9 +116,10 @@ namespace BMIcalculator
         {
             double weight = 0.0;
             bool ok = double.TryParse(txtWeight.Text, out weight);
-            if (!ok)
+            if (!ok || weight <= 0)
             {
                 MessageBox.Show("Invalid weight value , error");
+                return false; 
             }
             bmiCalc.setWeight(weight);
             return ok;
@@ -124,7 +129,7 @@ namespace BMIcalculator
         {
             double height = 0.0;
             bool ok = double.TryParse(txtCmFt.Text, out height);
-            if (!ok)
+            if (!ok || height <= 0)
             {
                 MessageBox.Show("Invalid height value , error");
             }
@@ -152,12 +157,12 @@ namespace BMIcalculator
             bmiCalc.setHeight(height);
             return ok;
         }
-            private void CalculatesAndResults()
-            {
+        private void CalculatesAndResults()
+        {
             double bmi = bmiCalc.CalculateBMI();
             lblBMI.Text = bmi.ToString("f2");
             lblWeightCategory.Text = bmiCalc.BmiWeightCategory();
-            }
+        }
 
         #endregion
 
@@ -174,7 +179,6 @@ namespace BMIcalculator
             savingCalc.SetDeposit(monthlyDeposit);
             
             return ok;
-
         }
 
         private bool ReadSavingsPeriod()
@@ -191,7 +195,7 @@ namespace BMIcalculator
             return ok;
         }
 
-        bool ReadIntrestRate()
+        private bool ReadIntrestRate()
         {
             double intrestRate; 
             bool ok = double.TryParse(txtIntrestRate.Text.Trim(), out intrestRate);
@@ -208,7 +212,7 @@ namespace BMIcalculator
             
         }
 
-        bool ReadTax()
+        private bool ReadTax()
         {
             double tax = 0.0;
             bool ok = double.TryParse(txtTax.Text, out tax);
@@ -221,18 +225,33 @@ namespace BMIcalculator
             return ok;
         }
 
+        private bool ReadInputSavingsCalc()
+        {
+            bool monthlyDeposit = ReadMonthlyDeposit();
+            bool readSavingsPeriod = ReadSavingsPeriod();
+            bool readIntrestRate = ReadIntrestRate();
+            bool readTax = ReadTax();
+
+            return monthlyDeposit && readSavingsPeriod && readTax && readIntrestRate;
+        }
+
         private void btnSavings_Click(object sender, EventArgs e)
         {
-            ReadMonthlyDeposit();
-            ReadSavingsPeriod();
-            ReadIntrestRate();
-            ReadTax();
 
-            lblAmountPaid.Text = savingCalc.CalculateAmountPaid().ToString("f2");
-            lblFinalBalance.Text = savingCalc.CalculateBalance().ToString("f2");
-            lblIntrestEarned.Text = savingCalc.ReturnIntrestEarned().ToString("f2");
-            lblTotalTax.Text = savingCalc.ReturnTaxAmount().ToString("f2");
-            
+            if (ReadInputSavingsCalc())
+            {
+                lblAmountPaid.Text = savingCalc.CalculateAmountPaid().ToString("f2");
+                lblFinalBalance.Text = savingCalc.CalculateBalance().ToString("f2");
+                lblIntrestEarned.Text = savingCalc.ReturnIntrestEarned().ToString("f2");
+                lblTotalTax.Text = savingCalc.ReturnTaxAmount().ToString("f2");
+            }
+            else
+            {
+                lblTotalTax.Text = String.Empty;
+                lblAmountPaid.Text = String.Empty;
+                lblIntrestEarned.Text = String.Empty;
+                lblFinalBalance.Text = String.Empty;
+            }
         }
 
         #endregion
@@ -260,22 +279,24 @@ namespace BMIcalculator
             UpdateGenderStatus();
         }
 
-        private void ReadAge()
+        private bool ReadAge()
         {
             int age;
             bool ok = int.TryParse(txtAge.Text , out age);
 
-            if(!ok)
+            if(!ok || age <= 0)
             {
                 MessageBox.Show("Error Wrong Age");
+                return false;
             }
             else
             {
                 bmrCalc.SetAge(age);
             }
+
+            return ok;
         }
         
-
         private void rbtnNoActive_CheckedChanged(object sender, EventArgs e)
         {
             bmrCalc.SetFactor(1.2);
@@ -300,24 +321,35 @@ namespace BMIcalculator
         {
             bmrCalc.SetFactor(1.9);
         }
-
+        private bool CheckInputsBMR()
+        {
+            bool bmiInputOK = ReadInputBMI();
+            bool ageOK = ReadAge();
+            
+            return ageOK && bmiInputOK;
+        }
         private void btnCalculateBMR_Click(object sender, EventArgs e)
         {
-            ReadInputBMI(); // first we need to read input from ReadWeight() and ReadHeight()
+            listResults.Items.Clear();
             ReadUnit(); // reading unit
             
-            // Then we put values from BMICalculator into instance values in BmrCalculator
-            bmrCalc.GetWeightFromBmiClass(bmiCalc); // we do it by using those two methods
-            bmrCalc.GetHeightFromBmiClass(bmiCalc);
-            bmrCalc.GetUnitFromBmiClass(bmiCalc);
+            if (CheckInputsBMR()) // this function checks units and calls methods ReadInputBMI() and ReadAge()
+            {
+                //We put values from BMICalculator into instance values in BmrCalculator
+                bmrCalc.GetWeightFromBmiClass(bmiCalc); 
+                bmrCalc.GetHeightFromBmiClass(bmiCalc);
+                bmrCalc.GetUnitFromBmiClass(bmiCalc);
 
-            ReadAge(); // we also need to read age value to calculations
-
-            
-
-            lblBmr.Text = bmrCalc.CalculateBMR().ToString("f2"); // lastly we do calculations 
-            lblMaintainWeight.Text = bmrCalc.MaintainWeight().ToString("f2");
-            lblLoseOrGain.Text = bmrCalc.LoseOrGainWeight().ToString();
+                // adding values to listbox
+                listResults.Items.Add("Your bmr:(calories/day) " + bmrCalc.CalculateBMR().ToString("f2"));
+                listResults.Items.Add("Calories to maintain you weight: " + bmrCalc.MaintainWeight().ToString("f2"));
+                for (int i = 1; i <= 4; i++)
+                {
+                    listResults.Items.Add(bmrCalc.LoseOrGainWeight(i));
+                }
+            }
+            else
+                listResults.Text = string.Empty;
         }
         #endregion
     }

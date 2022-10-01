@@ -102,21 +102,43 @@ namespace BMIcalculator
             this.age = age;
         }
 
-        public string LoseOrGainWeight()
+
+
+        public string LoseOrGainWeight(int number)
         {
             //To lose 500 gr(0.5 kg) a week = maintainWeightBMRs – 500 
-            
             //To lose 1000 gr(1 kg) a week = maintainWeightBMRs –1000 
-            
             //To add 500 gr(0.5 kg) a week = maintainWeightBMRs + 500 
-            
             //To add 1000 gr(1 kg) a week = maintainWeightBMRs + 1000
+            string weight1;
+            string weight2;
+            string weight3;
+            string weight4;
             
-            string stringout = String.Format($"Calories To lose 500 gr(0.5 kg) a week: {MaintainWeight() - 500:f2} \n " +
-                                $"Calories To lose 1000 gr(1 kg) a week: {MaintainWeight() - 1000:f2} \n" +
-                                $"Calories To add 500 gr(0.5 kg) a week: {MaintainWeight() + 500:f2}  \n" +
-                                $"Calories To add 1000 gr(1 kg) a week: {MaintainWeight() + 1000:f2}");
-            return stringout; 
+            if(number < 0 && number > 4)
+            {
+                MessageBox.Show("Error wrong number");
+                
+            }
+
+            switch(number)
+            {
+                case 1:
+                    weight1 = String.Format($"Calories to lose 500g a week: {MaintainWeight() - 500:f2}");
+                    return weight1;
+                    break;
+                case 2:
+                    weight2 = String.Format(($"Calories to lose 1kg a week: {MaintainWeight() - 1000:f2}"));
+                    return weight2;
+                case 3:
+                    weight3 = String.Format(($"Calories to gain 500g a week: {MaintainWeight() + 500:f2}"));
+                    return weight3;
+                case 4:
+                    weight4 = String.Format(($"Calories to gain 1kg a wekk: {MaintainWeight() + 1000:f2}"));
+                    return weight4;
+            }
+            return null;
+            
         }
 
     }
