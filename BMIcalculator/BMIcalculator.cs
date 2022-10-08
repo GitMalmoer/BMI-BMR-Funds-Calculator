@@ -39,30 +39,28 @@ namespace BMIcalculator
             }
         }
 
-        public static UnitTypes getUnit()
+        public static UnitTypes Unit
         {
-            return _unit;
+            get { return _unit; }
+            set { _unit = value; }
         }
 
-        public static void setUnit(UnitTypes unit)
-        {
-            _unit = unit;
-        }
+
         #endregion
-        
-        //Calculations
-        // Pounds and inches
-        // Formula: weight(lb) / [height(in)] 2x703
-        // calculate BMI by dividing weight in pounds by height in inches
-        // example weight = 150 lbs, height = 5'5" (65")
-        // calculation [150 / (65)/2 ]
-        // x 703 = 24,96
-
+        /// <summary>
+        ///Calculations
+        /// Pounds and inches
+        /// Formula: weight(lb) / [height(in)] 2x703
+        /// calculate BMI by dividing weight in pounds by height in inches
+        /// example weight = 150 lbs, height = 5'5" (65")
+        /// calculation [150 / (65)/2 ]
+        /// x 703 = 24,96
+        /// </summary >
         public double CalculateBMI()
         {
             // metric values 
             // height must be in m or inches
-            double bmiValue = 0.0;
+            
             double factor = 1.0;
 
             if(_unit == UnitTypes.Imperial)
@@ -70,7 +68,7 @@ namespace BMIcalculator
                 factor = 703.0;
             }
 
-            bmiValue = factor  * (_weight / (_height*_height));
+            double bmiValue = factor  * (_weight / (_height*_height));
             return bmiValue;
         }
 

@@ -30,19 +30,19 @@ namespace BMIcalculator
             set { unit = value;}
         }
 
-        public void SetGender(Gender Gender)
+        public Gender Gender
         {
-            _Gender = Gender;
+            set { _Gender = value; }
         }
 
-        public void SetFactor(double factor)
+        public double Factor
         {
-            _factor = factor;
+            set { _factor = value;}
         }
 
-        public void SetAge(int age)
+        public int Age
         {
-            _age = age;
+            set {_age = value;}
         }
 
         public double CalculateBMR()
@@ -66,7 +66,7 @@ namespace BMIcalculator
             return _BMR;
         }
 
-        public double MaintainWeight()
+        public double CalculationToMaintainWeight()
         {
             double maintainWeight = _BMR * _factor;
             return maintainWeight;
@@ -92,17 +92,17 @@ namespace BMIcalculator
             switch(number)
             {
                 case 1:
-                    weight1 = String.Format($"Calories to lose 500g a week: {MaintainWeight() - 500:f2}");
+                    weight1 = String.Format($"Calories to lose 500g a week: {CalculationToMaintainWeight() - 500:f2}");
                     return weight1;
                     break;
                 case 2:
-                    weight2 = String.Format(($"Calories to lose 1kg a week: {MaintainWeight() - 1000:f2}"));
+                    weight2 = String.Format(($"Calories to lose 1kg a week: {CalculationToMaintainWeight() - 1000:f2}"));
                     return weight2;
                 case 3:
-                    weight3 = String.Format(($"Calories to gain 500g a week: {MaintainWeight() + 500:f2}"));
+                    weight3 = String.Format(($"Calories to gain 500g a week: {CalculationToMaintainWeight() + 500:f2}"));
                     return weight3;
                 case 4:
-                    weight4 = String.Format(($"Calories to gain 1kg a wekk: {MaintainWeight() + 1000:f2}"));
+                    weight4 = String.Format(($"Calories to gain 1kg a wekk: {CalculationToMaintainWeight() + 1000:f2}"));
                     return weight4;
             }
             return null;

@@ -78,11 +78,11 @@ namespace BMIcalculator
         {
             if(rbtnMetric.Checked)
             {
-                BMIcalculator.setUnit(UnitTypes.Metric);
+                BMIcalculator.Unit = UnitTypes.Metric;
             }
             else
             {
-                BMIcalculator.setUnit(UnitTypes.Imperial);
+                BMIcalculator.Unit = UnitTypes.Imperial;
             }
         }
         
@@ -126,7 +126,7 @@ namespace BMIcalculator
                 }
             }
             // cm -> m ft -> inches
-            if(BMIcalculator.getUnit() == UnitTypes.Metric)
+            if(BMIcalculator.Unit == UnitTypes.Metric)
             {
                 height = height / 100; // cm -> m
             }
@@ -260,11 +260,11 @@ namespace BMIcalculator
         {
             if(rbtnFemale.Checked)
             {
-                bmrCalc.SetGender(Gender.Female);
+                bmrCalc.Gender = Gender.Female;
             }
             else
             {
-                bmrCalc.SetGender(Gender.Male);
+                bmrCalc.Gender = Gender.Male;
             }
         }
 
@@ -290,7 +290,7 @@ namespace BMIcalculator
             }
             else
             {
-                bmrCalc.SetAge(age);
+                bmrCalc.Age = age;
             }
 
             return ok;
@@ -298,27 +298,27 @@ namespace BMIcalculator
         
         private void rbtnNoActive_CheckedChanged(object sender, EventArgs e)
         {
-            bmrCalc.SetFactor(1.2);
+            bmrCalc.Factor = 1.2;
         }
 
         private void rbtnLightlyActive_CheckedChanged(object sender, EventArgs e)
         {
-            bmrCalc.SetFactor(1.375);
+            bmrCalc.Factor = 1.375;
         }
 
         private void rbtnModeratelyActive_CheckedChanged(object sender, EventArgs e)
         {
-            bmrCalc.SetFactor(1.550);
+            bmrCalc.Factor = 1.550;
         }
 
         private void rbtnVeryActive_CheckedChanged(object sender, EventArgs e)
         {
-            bmrCalc.SetFactor(1.725);
+            bmrCalc.Factor= 1.725;
         }
 
         private void rbtnExtraActiv_CheckedChanged(object sender, EventArgs e)
         {
-            bmrCalc.SetFactor(1.9);
+            bmrCalc.Factor = 1.9;
         }
         private bool CheckInputsBMR()
         {
@@ -337,11 +337,11 @@ namespace BMIcalculator
                 //We put values from BMICalculator into instance values in BmrCalculator
                 bmrCalc.Weight = BMIcalculator.Weight; // setter and getter
                 bmrCalc.Height = BMIcalculator.Height;
-                bmrCalc.Unit = BMIcalculator.getUnit();
+                bmrCalc.Unit = BMIcalculator.Unit;
 
                 // adding values to listbox
                 listResults.Items.Add("Your bmr:(calories/day) " + bmrCalc.CalculateBMR().ToString("f2"));
-                listResults.Items.Add("Calories to maintain you weight: " + bmrCalc.MaintainWeight().ToString("f2"));
+                listResults.Items.Add("Calories to maintain you weight: " + bmrCalc.CalculationToMaintainWeight().ToString("f2"));
                 for (int i = 1; i <= 4; i++)
                 {
                     listResults.Items.Add(bmrCalc.LoseOrGainWeight(i));
