@@ -8,101 +8,69 @@ namespace BMIcalculator
 {
     class BmrCalculator
     {
-        private int age;
-        private double BMR;
-        private Gender Gender; // declaring enum Gender
-        private double factor;
-        private double weight;
-        private double height;
+        private int _age;
+        private double _BMR;
+        private Gender _Gender; // declaring enum Gender
+        private double _factor;
+        private double _weight;
+        private double _height;
         private UnitTypes unit;
 
-        // Three very important functions to get values from the class BMIcalculator
-        // without those program would not work. Without them we would need to make our own getters and setters
-        public void GetWeightFromBmiClass(BMIcalculator BMIcalc)
+        public double Weight
         {
-            this.weight = BMIcalc.getWeight();
+            set { _weight = value;}
         }
 
-        public void GetHeightFromBmiClass(BMIcalculator BMIcalc)
+        public double Height
         {
-            this.height = BMIcalc.getHeight();
+            set { _height = value;}
         }
-
-        public void GetUnitFromBmiClass(BMIcalculator Bmicalc)
+        public UnitTypes Unit
         {
-            this.unit = Bmicalc.getUnit();
+            set { unit = value;}
         }
-
-        
-        /* Thanks to 3 functions above we save time and we dont have do those methods
-        
-        public void setWeight(double weight)
-        {
-            this.weight = weight;
-        }
-
-        public void setHeight(double height)
-        {
-            this.height = height;
-        }
-
-        public double GetWeight()
-        {
-            return weight;
-        }
-        public double GetHeight()
-        {
-            return height;
-        }
-        */
 
         public void SetGender(Gender Gender)
         {
-            this.Gender = Gender;
+            _Gender = Gender;
         }
-        public Gender GetGender()
+
+        public void SetFactor(double factor)
         {
-            return this.Gender;
+            _factor = factor;
+        }
+
+        public void SetAge(int age)
+        {
+            _age = age;
         }
 
         public double CalculateBMR()
         {
             
-            if (Gender == Gender.Female)
+            if (_Gender == Gender.Female)
             {
                 if(unit == UnitTypes.Metric)
-                    BMR = (10 * this.weight) + (6.25 * this.height*100) - (5 * age) - 161;
+                    _BMR = (10 * _weight) + (6.25 * _height*100) - (5 * _age) - 161;
                 else
-                    BMR = (10 * this.weight*0.454) + (6.25 * this.height * 2.54) - (5 * age) - 161;
+                    _BMR = (10 * _weight*0.454) + (6.25 * _height * 2.54) - (5 * _age) - 161;
 
             }
             else
             {
                 if (unit == UnitTypes.Metric)
-                    BMR = (10 * this.weight) + (6.25 * this.height*100) - (5 * age) + 5;
+                    _BMR = (10 * _weight) + (6.25 * _height*100) - (5 * _age) + 5;
                 else
-                    BMR = (10 * this.weight*0.454) + (6.25 * this.height * 2.54) - (5 * age) + 5;
+                    _BMR = (10 * _weight*0.454) + (6.25 * _height * 2.54) - (5 * _age) + 5;
             }
-            return BMR;
-        }
-
-        public void SetFactor(double factor)
-        {
-            this.factor = factor;
+            return _BMR;
         }
 
         public double MaintainWeight()
         {
-            double maintainWeight = this.BMR * factor;
+            double maintainWeight = _BMR * _factor;
             return maintainWeight;
         }
-
-        public void SetAge(int age)
-        {
-            this.age = age;
-        }
-
-
 
         public string LoseOrGainWeight(int number)
         {

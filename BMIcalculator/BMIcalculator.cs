@@ -8,46 +8,45 @@ namespace BMIcalculator
 {
      class BMIcalculator
     {
-        private double height;
-        private double weight;
-        private UnitTypes unit;
+        private static double _weight;
+        private static double _height;
+        private static UnitTypes _unit;
 
         public BMIcalculator()
         {
-            unit = UnitTypes.Metric;
+            _unit = UnitTypes.Metric;
         }
 
         #region Setters and getters
-        public double getHeight()
+        
+        public static double Weight 
         {
-            return height;
+            get { return _weight;}
+            set 
+            {
+                if (_weight >= 0.0)
+                    _weight = value;
+            }
         }
 
-        public void setHeight(double height)
+        public static double Height
         {
-            if(height >= 0.0)
-            this.height = height;
+            get { return _height; }
+            set 
+            {
+                if (_height >= 0.0)
+                    _height = value;
+            }
         }
 
-        public double getWeight()
+        public static UnitTypes getUnit()
         {
-            return weight;
+            return _unit;
         }
 
-        public void setWeight(double weight)
+        public static void setUnit(UnitTypes unit)
         {
-            if (weight >= 0.0)
-                this.weight = weight;
-        }
-
-        public UnitTypes getUnit()
-        {
-            return unit;
-        }
-
-        public void setUnit(UnitTypes unit)
-        {
-            this.unit = unit;
+            _unit = unit;
         }
         #endregion
         
@@ -66,12 +65,12 @@ namespace BMIcalculator
             double bmiValue = 0.0;
             double factor = 1.0;
 
-            if(unit == UnitTypes.Imperial)
+            if(_unit == UnitTypes.Imperial)
             {
                 factor = 703.0;
             }
 
-            bmiValue = factor  * (weight / (height*height));
+            bmiValue = factor  * (_weight / (_height*_height));
             return bmiValue;
         }
 
@@ -100,25 +99,25 @@ namespace BMIcalculator
             double factor = 1.0;
             double weight;
             double weightLow;
-            if (unit == UnitTypes.Imperial)
+            if (_unit == UnitTypes.Imperial)
             {
                 factor = 703.0;
             }
-            weight = (this.height * this.height)/factor;
+            weight = (_height * _height)/factor;
             weightLow = weight * 18.50; //low limit 
             return weightLow;
         }
 
-        public double NormalWeightHighLimit()
+        public double NormalWeightHighLimit() // normal weight is between {NormalWeightLowLimit()} and {NormalWeightHighLimit}
         {
             double factor = 1.0;
             double weight;
             double weightHigh;
-            if (unit == UnitTypes.Imperial)
+            if (_unit == UnitTypes.Imperial)
             {
                 factor = 703.0;
             }
-            weight = (this.height * this.height) / factor;
+            weight = (_height * _height) / factor;
             weightHigh = weight * 24.9; // high limit 
             return weightHigh;
         }

@@ -33,6 +33,7 @@ namespace BMIcalculator
         {
             CenterToScreen();
         }
+
         #region BMICalculator
         private void UpdateHeightText()
         {
@@ -52,7 +53,6 @@ namespace BMIcalculator
             lblWeightCategory.Text = ("");
         }
         
-
         private void rbtnMetric_CheckedChanged(object sender, EventArgs e)
         {
             UpdateHeightText();
@@ -64,26 +64,6 @@ namespace BMIcalculator
             UpdateHeightText();
             
         }
-
-        private void btnOK_Click(object sender, EventArgs e)
-        {
-            bool ok = ReadInputBMI();
-            if (ok)
-            {
-                CalculatesAndResults();
-                string a = bmiCalc.NormalWeightLowLimit().ToString("f2"); // Calculating low limit and putting it in string
-                string b = bmiCalc.NormalWeightHighLimit().ToString("f2"); // calculationg high limit
-                string sentence = ($"Normal weight should be between {a} and {b}"); // putting both methods in a string
-                lblNormalWeight.Text = sentence;
-            }
-            else // if input is wrong it clears the labels
-            {
-                lblBMI.Text = string.Empty;
-                lblWeightCategory.Text = String.Empty;
-            }
-          
-        }
-
         private bool ReadInputBMI()
         {
             ReadName();
@@ -98,11 +78,11 @@ namespace BMIcalculator
         {
             if(rbtnMetric.Checked)
             {
-                bmiCalc.setUnit(UnitTypes.Metric);
+                BMIcalculator.setUnit(UnitTypes.Metric);
             }
             else
             {
-                bmiCalc.setUnit(UnitTypes.Imperial);
+                BMIcalculator.setUnit(UnitTypes.Imperial);
             }
         }
         
@@ -121,7 +101,8 @@ namespace BMIcalculator
                 MessageBox.Show("Invalid weight value , error");
                 return false; 
             }
-            bmiCalc.setWeight(weight);
+            //bmiCalc.setWeight(weight);
+            BMIcalculator.Weight = weight;
             return ok;
         }
 
@@ -145,16 +126,17 @@ namespace BMIcalculator
                 }
             }
             // cm -> m ft -> inches
-            if(bmiCalc.getUnit() == UnitTypes.Metric)
+            if(BMIcalculator.getUnit() == UnitTypes.Metric)
             {
                 height = height / 100; // cm -> m
             }
             else 
             {
-                height = height * 12.0 + inch; // ft -> inch
+                height = height * 12.0 + inch; // ft -> inch 1ft = 12 inch
             }
 
-            bmiCalc.setHeight(height);
+            //bmiCalc.setHeight(height);
+            BMIcalculator.Height = height;
             return ok;
         }
         private void CalculatesAndResults()
@@ -163,7 +145,24 @@ namespace BMIcalculator
             lblBMI.Text = bmi.ToString("f2");
             lblWeightCategory.Text = bmiCalc.BmiWeightCategory();
         }
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            bool ok = ReadInputBMI();
+            if (ok)
+            {
+                CalculatesAndResults();
+                string a = bmiCalc.NormalWeightLowLimit().ToString("f2"); // Calculating low limit and putting it in string
+                string b = bmiCalc.NormalWeightHighLimit().ToString("f2"); // calculationg high limit
+                string sentence = ($"Normal weight should be between {a} and {b}"); // putting both methods in a string
+                lblNormalWeight.Text = sentence;
+            }
+            else // if input is wrong it clears the labels
+            {
+                lblBMI.Text = string.Empty;
+                lblWeightCategory.Text = String.Empty;
+            }
 
+        }
         #endregion
 
         #region SavingsCalculator
@@ -336,9 +335,9 @@ namespace BMIcalculator
             if (CheckInputsBMR()) // this function checks units and calls methods ReadInputBMI() and ReadAge()
             {
                 //We put values from BMICalculator into instance values in BmrCalculator
-                bmrCalc.GetWeightFromBmiClass(bmiCalc); 
-                bmrCalc.GetHeightFromBmiClass(bmiCalc);
-                bmrCalc.GetUnitFromBmiClass(bmiCalc);
+                bmrCalc.Weight = BMIcalculator.Weight; // setter and getter
+                bmrCalc.Height = BMIcalculator.Height;
+                bmrCalc.Unit = BMIcalculator.getUnit();
 
                 // adding values to listbox
                 listResults.Items.Add("Your bmr:(calories/day) " + bmrCalc.CalculateBMR().ToString("f2"));
